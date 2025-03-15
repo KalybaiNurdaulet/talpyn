@@ -89,7 +89,28 @@ img{
   max-height: 0;
   transition: max-height 0.2s ease-out;
 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
   &.show {
     max-height: 500px;
   }
+}
+
+.frame{
+    width: 50%;
+    height: 400px;
+}
+@media(max-width:700px){
+    .frame{
+        height: 200px;
+    }
+}
+
+@media(max-width:450px){
+    .frame{
+        width: 80%;
+        height: 150px;
+    }
 }
