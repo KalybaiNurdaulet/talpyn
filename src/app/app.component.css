@@ -3,7 +3,7 @@
     height:60px;
     background-color:color(srgb 0.972549 0.980392 0.988235);
     display: flex;
-    justify-items: center;
+    justify-content: space-around;
     box-shadow: 0 0 1px ;
 }
 
@@ -26,7 +26,7 @@
     border:0;
     margin-right: 20px;
     margin-left: 7px;
-    font-size: 14px;
+    font-size: 100%;
     color: rgb(99, 99, 99);
     background-color: rgba(125, 125, 125, 0);
 }
@@ -36,12 +36,18 @@ img{
     opacity: 0.6;
 }
 
+@media (max-width: 479px) {
+    img{
+        display: none;
+    }
+  }
+
 .logo{
     width: max-content;
     height: max-content;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    float: left;
+
 }
 
 .logoTal{
