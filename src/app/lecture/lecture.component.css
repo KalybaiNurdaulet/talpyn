@@ -1,0 +1,103 @@
+.head{
+    width: 100%;
+    height: max-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.search{
+    display: flex;
+    border: 0.5px solid rgba(153, 153, 153, 0.879);
+    border-radius: 5px;
+    align-content: center;
+    background-color: aliceblue;
+    width: 30%;
+}
+.search:hover{
+    border: 0.5px solid rgb(73, 144, 236);
+}
+
+.icon{
+    display: flex;
+    justify-content: center;
+    border: 1px;
+}
+input{
+    padding: 6px;
+    background-color: aliceblue;
+    width: 100%;
+    border: 0;
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+}
+.inputa{
+    width: 92%;
+}
+
+img{
+    width: 24px;
+    opacity: 0.6;
+}
+.cards-container{
+    display: flex;
+    gap: 40px;
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 50px;
+    justify-content: center;
+}
+
+.card{
+    width: 200px;
+    border: 1px solid rgb(192, 192, 192);
+    border-radius: 5px;
+    background-color: aliceblue;
+}
+
+.card:hover{
+    border: 1px solid rgb(100, 139, 246);
+}
+
+.card-image{
+    width: 90%;
+    margin: 5%;
+    border-radius: 5px;
+}
+
+.card-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card-title{
+    margin-bottom: 0px;
+}
+
+.card-price{
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.card-description{
+    color: rgb(89, 89, 89);
+    margin-bottom: 10px;
+}
+
+.card-button{
+    text-decoration: none;
+    border: 1px solid rgb(220, 220, 220);
+    margin-bottom: 10px;
+    padding: 6px;
+    border-radius: 5px;
+    background-color: rgba(39, 135, 220, 0.345);
+    color: rgb(89, 89, 89);
+}
+
+.card-button:hover{
+    border: 1px solid rgb(100, 139, 246);
+    background-color: rgba(85, 166, 236, 0.345);
+
+}

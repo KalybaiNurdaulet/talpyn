@@ -1,0 +1,51 @@
+.head{
+    width:100%;
+    height:60px;
+    background-color:color(srgb 0.972549 0.980392 0.988235);
+    display: flex;
+    justify-items: center;
+    box-shadow: 0 0 1px ;
+}
+
+.langblock{
+    width: max-content;
+    display: flex;
+    align-items: center;
+    border: 0.1px solid rgb(220, 220, 220);
+    border-radius: 5px;
+    height: 50%;
+    margin-top: 15px;
+    text-decoration: none;
+}
+.langblock:hover{
+    border: 0.1px solid rgb(73, 144, 236);
+}
+
+.lang{
+    justify-items: center;
+    border:0;
+    margin-right: 20px;
+    margin-left: 7px;
+    font-size: 14px;
+    color: rgb(99, 99, 99);
+    background-color: rgba(125, 125, 125, 0);
+}
+img{
+    width: 18px;
+    margin-right: 6px;
+    opacity: 0.6;
+}
+
+.logo{
+    width: max-content;
+    height: max-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logoTal{
+    width: 150px;
+    margin-left: 30px;
+    margin-top: 10px;
+}
