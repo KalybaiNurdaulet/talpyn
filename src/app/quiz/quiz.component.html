@@ -1,0 +1,22 @@
+<!-- src/app/quiz/quiz.component.html -->
+<div *ngIf="!quizCompleted" class="quiz">
+    <h2>{{ currentQuestionIndex + 1 }}/{{ questions.length }}</h2>
+    <p class="ques"><strong>{{ currentQuestionIndex + 1 }}.</strong>{{ questions[currentQuestionIndex].questionText }}</p>
+  
+    <div *ngFor="let option of questions[currentQuestionIndex].options; let i = index"  class="but">
+      <button
+        (click)="selectAnswer(i)"
+        [class.selected]="selectedAnswerIndex === i"
+      >
+        {{ option }}
+      </button>
+    </div>
+  
+    <button (click)="nextQuestion()" class="nextQues">Следующий вопрос</button>
+  </div>
+  
+  <div *ngIf="quizCompleted">
+    <h2>Тест завершен!</h2>
+    <p>Ваш результат: {{ correctAnswersCount }} из {{ questions.length }}</p>
+    <button (click)="resetQuiz()" class="but">Начать заново</button>
+  </div>
