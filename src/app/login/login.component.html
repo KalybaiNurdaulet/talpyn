@@ -1,0 +1,28 @@
+<!-- src/app/components/login/login.component.html -->
+<h2>Вход</h2>
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="username">Имя пользователя:</label> <!-- Убедитесь, что это username -->
+    <input type="text" id="username" formControlName="username" required>
+    <div *ngIf="username?.invalid && (username?.dirty || username?.touched)">
+      <small *ngIf="username?.errors?.['required']" style="color: red;">Обязательное поле.</small>
+    </div>
+  </div>
+
+  <div>
+    <label for="password">Пароль:</label>
+    <input type="password" id="password" formControlName="password" required>
+    <div *ngIf="password?.invalid && (password?.dirty || password?.touched)">
+       <small *ngIf="password?.errors?.['required']" style="color: red;">Обязательное поле.</small>
+    </div>
+  </div>
+
+  <div *ngIf="errorMessage" style="color: red; margin-top: 10px; white-space: pre-wrap;">
+    {{ errorMessage }}
+  </div>
+
+  <button type="submit" [disabled]="loginForm.invalid || isLoading">
+    {{ isLoading ? 'Вход...' : 'Войти' }}
+  </button>
+</form>
+<p>Нет аккаунта? <a routerLink="/register">Зарегистрироваться</a></p>
