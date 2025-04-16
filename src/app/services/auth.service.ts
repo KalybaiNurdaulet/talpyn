@@ -89,7 +89,6 @@ export class AuthService {
             // Опционально: сохраняем refresh токен
             // if (response.refresh) { this.saveRefreshToken(response.refresh); }
             this.loggedIn.next(true); // Обновляем статус
-            console.log('Login successful, access token stored.');
           } else {
             console.warn('Login successful, but no access token received.');
             // Возможно, стоит выбросить ошибку, если токен критичен
@@ -99,6 +98,7 @@ export class AuthService {
         map(() => void 0), // Преобразуем результат в void после tap
         catchError(this.handleError)
       );
+      
   }
 
   /**
@@ -110,7 +110,7 @@ export class AuthService {
     // this.removeRefreshToken();
     this.loggedIn.next(false);
     console.log('User logged out.');
-    this.router.navigate(['/login']); // Укажите ваш путь
+    this.router.navigate(['/login']);
   }
 
   /**

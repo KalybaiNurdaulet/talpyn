@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Question } from '../question';
 import { CommonModule } from '@angular/common';
+import { Route, RouterOutlet } from '@angular/router';
+import { ChatComponent } from '../chat/chat.component';
 
 @Component({
   selector: 'app-quiz',
-  imports: [CommonModule],
+  imports: [CommonModule,RouterOutlet,ChatComponent],
   templateUrl: './quiz.component.html',
   styleUrl: './quiz.component.css'
 })

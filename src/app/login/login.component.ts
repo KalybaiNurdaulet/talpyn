@@ -1,9 +1,9 @@
-// src/app/components/login/login.component.ts
+
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { AuthService,LoginCredentials } from '../services/auth.service'; // Используем обновленный сервис
+import { AuthService,LoginCredentials } from '../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -14,6 +14,7 @@ import { AuthService,LoginCredentials } from '../services/auth.service'; // Ис
     RouterLink
   ],
   templateUrl: './login.component.html',
+  styleUrl: './login.component.css',
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
@@ -56,7 +57,7 @@ export class LoginComponent implements OnInit {
         this.isLoading = false;
         console.log('Login successful, navigating...');
         // Редирект на защищенную страницу
-        this.router.navigate(['/dashboard']); // <-- Укажите ваш путь
+        this.router.navigate(['./lecture']);
       },
       error: (err) => {
         this.isLoading = false;

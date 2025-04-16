@@ -33,34 +33,16 @@
     </div>
   </div>
 
-  <!-- Поле Password Confirmation -->
+
   <div>
     <label for="reg-password2">Подтвердите пароль:</label>
     <input type="password" id="reg-password2" formControlName="password2" required>
      <div *ngIf="password2?.invalid && (password2?.dirty || password2?.touched)">
         <small *ngIf="password2?.errors?.['required']" style="color: red;">Обязательное поле.</small>
-        <!-- Показываем ошибку несовпадения, если она есть НА КОНТРОЛЕ password2 -->
         <small *ngIf="password2?.errors?.['passwordMismatch']" style="color: red;">Пароли не совпадают.</small>
      </div>
-     <!-- Альтернативно, можно показать общую ошибку формы -->
-     <!-- <div *ngIf="registerForm.errors?.['passwordMismatch'] && password2?.touched">
-        <small style="color: red;">Пароли не совпадают.</small>
-     </div> -->
-  </div>
 
-  <!-- Опциональные поля First Name / Last Name (добавьте, если нужно) -->
-  <!--
-  <div>
-    <label for="first_name">Имя:</label>
-    <input type="text" id="first_name" formControlName="first_name">
   </div>
-  <div>
-    <label for="last_name">Фамилия:</label>
-    <input type="text" id="last_name" formControlName="last_name">
-  </div>
-  -->
-
-  <!-- Общее сообщение об ошибке от API -->
   <div *ngIf="errorMessage" style="color: red; margin-top: 10px; white-space: pre-wrap;">
     {{ errorMessage }}
   </div>

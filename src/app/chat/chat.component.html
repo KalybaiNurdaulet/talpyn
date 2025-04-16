@@ -1,0 +1,28 @@
+<!-- src/app/components/chat/chat.component.html -->
+<div class="chat-container">
+    <div class="chat-messages"> <!-- Добавьте этому элементу стили для прокрутки -->
+      <div *ngFor="let msg of messages" class="message" [ngClass]="{'user-message': msg.sender === 'user', 'ai-message': msg.sender === 'ai'}">
+        <strong>{{ msg.sender === 'user' ? 'Вы' : 'AI' }}:</strong> {{ msg.text }}
+      </div>
+      <!-- Индикатор загрузки -->
+      <div *ngIf="isLoading" class="message ai-message">
+        <strong>AI:</strong> Печатает...
+      </div>
+      <!-- Отображение ошибки -->
+      <div *ngIf="error && !isLoading" class="message error-message">
+        <strong>Ошибка:</strong> {{ error }}
+      </div>
+    </div>
+    <div class="chat-input">
+      <input
+        type="text"
+        [(ngModel)]="newMessage"
+        (keyup.enter)="sendMessage()"
+        placeholder="Введите ваше сообщение..."
+        [disabled]="isLoading"
+      />
+      <button (click)="sendMessage()" [disabled]="isLoading || !newMessage.trim()">
+        {{ isLoading ? 'Отправка...' : 'Отправить' }}
+      </button>
+    </div>
+  </div>

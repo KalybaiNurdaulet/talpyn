@@ -1,0 +1,239 @@
+/* src/app/components/chat/chat.component.css */
+
+/* Используем переменные для легкой смены темы */
+:root {
+    --chat-bg-color: #f4f7f9;
+    --chat-border-color: #e0e6ed;
+    --chat-text-color: #333;
+    --chat-messages-bg: #ffffff;
+  
+    --user-message-bg: #007bff; /* Синий цвет для пользователя */
+    --user-message-text: #ffffff;
+  
+    --ai-message-bg: #e9ecef;   /* Светло-серый для AI */
+    --ai-message-text: #333;
+  
+    --input-bg-color: #ffffff;
+    --input-border-color: #ced4da;
+    --input-focus-border-color: #80bdff;
+    --input-focus-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  
+    --button-bg-color: #007bff;
+    --button-text-color: #ffffff;
+    --button-hover-bg-color: #0056b3;
+    --button-disabled-bg-color: #b0c4de; /* Светло-синий для неактивной кнопки */
+    --button-disabled-text-color: #f8f8f8;
+  
+    --error-bg-color: #f8d7da;
+    --error-text-color: #721c24;
+    --error-border-color: #f5c6cb;
+  
+    --spacing-unit: 8px;
+    --border-radius: 6px;
+    --chat-width: 450px; /* Ширина чата */
+    --chat-height: 600px; /* Высота чата */
+  }
+  
+  .chat-container {
+    width: 100%;
+    max-width: var(--chat-width); /* Ограничиваем максимальную ширину */
+    height: var(--chat-height);   /* Фиксированная высота */
+    display: flex;
+    flex-direction: column; /* Сообщения сверху, инпут снизу */
+    border: 1px solid var(--chat-border-color);
+    border-radius: var(--border-radius);
+    background-color: var(--chat-bg-color);
+    overflow: hidden; /* Скрываем все, что выходит за рамки */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    color: var(--chat-text-color);
+    margin: 20px auto; /* Центрируем и добавляем отступ сверху/снизу */
+  }
+  
+  .chat-messages {
+    flex-grow: 1; /* Занимает все доступное пространство по высоте */
+    padding: calc(var(--spacing-unit) * 2);
+    overflow-y: auto; /* Включает вертикальную прокрутку, если нужно */
+    background-color: var(--chat-messages-bg);
+    display: flex; /* Для выравнивания последнего сообщения внизу */
+    flex-direction: column; /* Сообщения идут сверху вниз */
+  }
+  
+  /* Плавная прокрутка */
+  .chat-messages::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .chat-messages::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+  }
+  
+  .chat-messages::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 3px;
+  }
+  
+  .chat-messages::-webkit-scrollbar-thumb:hover {
+    background: #aaa;
+  }
+  
+  .message {
+    margin-bottom: calc(var(--spacing-unit) * 1.5);
+    padding: var(--spacing-unit) calc(var(--spacing-unit) * 1.5);
+    border-radius: var(--border-radius);
+    max-width: 80%; /* Сообщения не растягиваются на всю ширину */
+    word-wrap: break-word; /* Перенос длинных слов */
+    line-height: 1.4;
+    /* Анимация появления */
+    opacity: 0;
+    transform: translateY(10px);
+    animation: fadeIn 0.3s ease forwards;
+  }
+  
+  @keyframes fadeIn {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  
+  .message strong {
+    display: block; /* Имя отправителя на отдельной строке */
+    margin-bottom: calc(var(--spacing-unit) / 2);
+    font-size: 0.85em;
+    font-weight: 600;
+    opacity: 0.8; /* Немного приглушаем имя */
+  }
+  
+  .user-message {
+    background-color: var(--user-message-bg);
+    color: var(--user-message-text);
+    margin-left: auto; /* Выравнивание по правому краю */
+    border-bottom-right-radius: 0; /* Маленький "хвостик" у своего сообщения */
+  }
+  
+  .user-message strong {
+      color: rgba(255, 255, 255, 0.8); /* Делаем имя пользователя чуть светлее на синем фоне */
+  }
+  
+  
+  .ai-message {
+    background-color: var(--ai-message-bg);
+    color: var(--ai-message-text);
+    margin-right: auto; /* Выравнивание по левому краю */
+    border-bottom-left-radius: 0; /* "Хвостик" у сообщения AI */
+  }
+  
+  /* Стилизация индикатора загрузки ("Печатает...") */
+  .ai-message:has(strong + span:contains("Печатает...")) { /* Современный CSS :has(), если поддерживается */
+    font-style: italic;
+    opacity: 0.7;
+  }
+  /* Альтернатива или дополнение для старых браузеров (добавьте класс 'typing' при загрузке) */
+  .message.typing {
+     font-style: italic;
+     opacity: 0.7;
+  }
+  .message.ai-message strong:contains("Печатает") + span::after {
+      content: '...';
+      display: inline-block;
+      animation: typing-dots 1s infinite steps(3, start);
+      vertical-align: bottom;
+  }
+  
+  @keyframes typing-dots {
+    0% { clip-path: inset(0 100% 0 0); }
+    33% { clip-path: inset(0 66% 0 0); }
+    66% { clip-path: inset(0 33% 0 0); }
+    100% { clip-path: inset(0 0 0 0); }
+  }
+  
+  
+  
+  .error-message {
+    background-color: var(--error-bg-color);
+    color: var(--error-text-color);
+    border: 1px solid var(--error-border-color);
+    margin-right: auto; /* Выравнивание по левому краю */
+    max-width: 90%; /* Может быть шире для ошибки */
+  }
+  
+  .error-message strong {
+    color: var(--error-text-color); /* Наследуем цвет текста для заголовка */
+  }
+  
+  
+  .chat-input {
+    display: flex; /* Располагаем инпут и кнопку в ряд */
+    padding: calc(var(--spacing-unit) * 1.5);
+    border-top: 1px solid var(--chat-border-color);
+    background-color: var(--chat-bg-color); /* Тот же фон, что и у контейнера */
+    gap: var(--spacing-unit); /* Пространство между инпутом и кнопкой */
+  }
+  
+  .chat-input input[type="text"] {
+    flex-grow: 1; /* Инпут занимает максимум доступного места */
+    padding: calc(var(--spacing-unit) * 1.2);
+    border: 1px solid var(--input-border-color);
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    background-color: var(--input-bg-color);
+    color: var(--chat-text-color);
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  }
+  
+  .chat-input input[type="text"]:focus {
+    outline: none;
+    border-color: var(--input-focus-border-color);
+    box-shadow: var(--input-focus-shadow);
+  }
+  
+  .chat-input input[type="text"]::placeholder {
+    color: #999;
+    opacity: 1;
+  }
+  
+  .chat-input button {
+    padding: calc(var(--spacing-unit) * 1.2) calc(var(--spacing-unit) * 2);
+    border: none;
+    border-radius: var(--border-radius);
+    background-color: var(--button-bg-color);
+    color: var(--button-text-color);
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.15s ease-in-out;
+    white-space: nowrap; /* Предотвращаем перенос текста кнопки */
+  }
+  
+  .chat-input button:hover:not(:disabled) {
+    background-color: var(--button-hover-bg-color);
+  }
+  
+  .chat-input button:disabled {
+    background-color: var(--button-disabled-bg-color);
+    color: var(--button-disabled-text-color);
+    cursor: not-allowed;
+    opacity: 0.7;
+  }
+  
+  /* Медиа-запрос для маленьких экранов */
+  @media (max-width: 500px) {
+    :root {
+      --chat-width: 95%; /* На маленьких экранах чат занимает почти всю ширину */
+      --chat-height: 85vh; /* Занимает большую часть высоты экрана */
+    }
+    .message {
+      max-width: 90%; /* Сообщения могут быть немного шире */
+    }
+    .chat-input {
+      padding: var(--spacing-unit);
+    }
+    .chat-input input[type="text"],
+    .chat-input button {
+      font-size: 0.95rem; /* Немного уменьшаем шрифт в инпуте */
+      padding: var(--spacing-unit);
+    }
+  }

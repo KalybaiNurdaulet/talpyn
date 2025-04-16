@@ -20,3 +20,7 @@
     <p>Ваш результат: {{ correctAnswersCount }} из {{ questions.length }}</p>
     <button (click)="resetQuiz()" class="but">Начать заново</button>
   </div>
+
+<router-outlet>
+  <app-chat></app-chat>
+</router-outlet>

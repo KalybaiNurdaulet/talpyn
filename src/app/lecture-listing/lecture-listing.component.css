@@ -51,16 +51,18 @@ img{
 }
 
 .lecture-listing-button {
-  background-color: #eee;
+  background-color: #799dd7a3;
   color: #444;
   cursor: pointer;
   padding: 18px;
-  width: 100%;
+  width: 80%;
   border: none;
   text-align: left;
   outline: none;
   font-size: 15px;
   transition: 0.4s;
+  border-radius: 30px;
+  margin-left: 10%;
 
   &:hover {
     background-color: #ddd;

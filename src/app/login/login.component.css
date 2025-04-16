@@ -1,0 +1,125 @@
+/* src/app/components/login/login.component.css */
+
+/* --- Общие стили для хост-элемента (компонента) --- */
+:host {
+    display: block; /* Делаем компонент блочным элементом */
+    max-width: 450px; /* Ограничиваем максимальную ширину формы */
+    margin: 3rem auto; /* Центрируем форму на странице с отступами */
+    padding: 2rem; /* Внутренние отступы */
+    background-color: #ffffff; /* Белый фон */
+    border-radius: 8px; /* Скругляем углы */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Небольшая тень для объема */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Задаем приятный шрифт */
+  }
+  
+  /* --- Заголовок --- */
+  h2 {
+    color: #0056b3; /* Темно-синий цвет для заголовка */
+    text-align: center; /* Центрируем текст */
+    margin-bottom: 1.5rem; /* Отступ снизу */
+    font-weight: 600; /* Делаем шрифт заголовка немного жирнее */
+  }
+  
+  /* --- Контейнеры для полей ввода --- */
+  form > div {
+    margin-bottom: 1.25rem; /* Отступ между полями */
+  }
+  
+  /* --- Метки (Labels) --- */
+  label {
+    display: block; /* Метка занимает всю ширину */
+    margin-bottom: 0.5rem; /* Небольшой отступ под меткой */
+    color: #333; /* Темно-серый цвет текста метки */
+    font-weight: 500; /* Средняя жирность шрифта */
+    font-size: 0.95rem;
+  }
+  
+  /* --- Поля ввода (Inputs) --- */
+  input[type="text"],
+  input[type="password"] { /* Убрали email, т.к. его нет в этой форме */
+    width: 100%; /* Поле ввода занимает всю доступную ширину */
+    padding: 0.8rem 1rem; /* Внутренние отступы в поле */
+    border: 1px solid #ced4da; /* Светло-серая граница */
+    border-radius: 4px; /* Слегка скругленные углы */
+    box-sizing: border-box; /* Учитываем padding и border в общей ширине */
+    font-size: 1rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out; /* Плавный переход для фокуса */
+  }
+  
+  /* --- Стиль полей ввода при фокусе --- */
+  input[type="text"]:focus,
+  input[type="password"]:focus {
+    border-color: #80bdff; /* Голубая граница при фокусе */
+    outline: 0; /* Убираем стандартный outline */
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Легкое голубое свечение */
+  }
+  
+  /* --- Сообщения об ошибках валидации --- */
+  /* Стилизуем контейнер для ошибок под полем */
+  form > div > div:not([style*="color: red"]) { /* Исключаем общий блок ошибок */
+    margin-top: 0.3rem; /* Небольшой отступ сверху */
+  }
+  
+  /* Стилизуем сами сообщения (тег small) */
+  small[style*="color: red"] { /* Выбираем <small> с inline стилем red */
+    font-size: 0.85em;
+    /* Цвет уже задан inline */
+  }
+  
+  /* --- Общее сообщение об ошибке (например, неверные данные) --- */
+  form > div[style*="color: red"] {
+    margin-top: 1rem; /* Отступ сверху побольше */
+    padding: 0.75rem 1rem; /* Внутренние отступы */
+    background-color: #f8d7da; /* Светло-красный фон */
+    border: 1px solid #f5c6cb; /* Розоватая граница */
+    color: #721c24; /* Темно-красный текст */
+    border-radius: 4px; /* Скругление углов */
+    white-space: pre-wrap; /* Сохраняем переносы строк из errorMessage */
+    font-size: 0.9rem;
+  }
+  
+  /* --- Кнопка отправки --- */
+  button[type="submit"] {
+    display: block; /* Кнопка занимает всю ширину */
+    width: 100%;
+    padding: 0.8rem 1rem; /* Внутренние отступы */
+    background-color: #007bff; /* Основной синий цвет */
+    color: #ffffff; /* Белый текст */
+    border: none; /* Убираем границу */
+    border-radius: 4px; /* Скругление углов */
+    font-size: 1.1rem; /* Крупнее шрифт */
+    font-weight: bold; /* Жирный шрифт */
+    cursor: pointer; /* Указатель при наведении */
+    transition: background-color 0.15s ease-in-out; /* Плавный переход цвета фона */
+    margin-top: 1.5rem; /* Отступ сверху перед кнопкой */
+  }
+  
+  /* --- Стиль кнопки при наведении (если не выключена) --- */
+  button[type="submit"]:hover:not(:disabled) {
+    background-color: #0056b3; /* Более темный синий при наведении */
+  }
+  
+  /* --- Стиль выключенной кнопки --- */
+  button[type="submit"]:disabled {
+    background-color: #a0cffd; /* Бледный синий */
+    cursor: not-allowed; /* Курсор "недоступно" */
+  }
+  
+  /* --- Текст и ссылка "Нет аккаунта?" --- */
+  p {
+    text-align: center; /* Центрируем текст */
+    margin-top: 1.5rem; /* Отступ сверху */
+    color: #6c757d; /* Серый цвет текста */
+    font-size: 0.9rem;
+  }
+  
+  p a {
+    color: #007bff; /* Синий цвет ссылки */
+    text-decoration: none; /* Убираем подчеркивание по умолчанию */
+    font-weight: 500; /* Средняя жирность */
+  }
+  
+  p a:hover {
+    text-decoration: underline; /* Добавляем подчеркивание при наведении */
+    color: #0056b3; /* Более темный синий при наведении */
+  }
